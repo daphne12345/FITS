@@ -1,0 +1,426 @@
+<!--Second page of the application displaying the results.-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>FITS </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+        .container {
+            padding: 1%;
+            padding-top: 2%;
+            text-align: center;
+        }
+
+        .container table,
+        tr {
+            width: 100%;
+            border: 2px solid black;
+        }
+
+        tr {
+            border: 2px solid black;
+        }
+
+        td {
+            padding: 5px;
+        }
+
+        .brandName:hover,
+        .brandName:active {
+            background-color: #243665;
+            color: #91cdb8;
+            padding: 15px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            border-radius: 5px;
+            border: 0px;
+            font-weight: 400;
+            font-size: 16px;
+            width: 40%;
+            border: 2px solid #243665;
+            cursor: pointer;
+        }
+
+        .brandName {
+            background-color: #fff;
+            color: #91cdb8;
+            padding: 15px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            border-radius: 5px;
+            border: 0px;
+            font-weight: 400;
+            font-size: 16px;
+            width: 40%;
+            cursor: pointer;
+            border: 2px solid #243665;
+        }
+
+        .highlight {
+            background-color: yellow;
+            font-weight: bold;
+        }
+
+        #chart {
+            width: 400px;
+            height: 400px;
+        }
+
+        #box {
+            background-color: #91cdb8;
+            font-size: 16px;
+            color: #000;
+            overflow-x: auto;
+            max-height: 500px;
+            padding: 10px;
+            margin-top: 5%;
+            width: 100%;
+        }
+
+        #box table {
+            table-layout: fixed;
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+
+        #box th,
+        #box td {
+            white-space: normal;
+            word-break: break-word;
+            padding: 10px;
+            border: 1px solid #000;
+        }
+
+        #box th {
+            background-color: #243665;
+            color: #fff;
+        }
+
+        #myChart {
+            width: 400px;
+            height: 400px;
+        }
+
+        #selectedTopic {
+            font-size: 24px;
+            margin-bottom: 10px;
+            font-weight: 900;
+            color: #243665;
+            padding-bottom: 30px;
+            text-align: center;
+        }
+
+<!--        .button {-->
+<!--        background-color: #243665;-->
+<!--        color: #fff;-->
+<!--        border-radius: 4px;-->
+<!--        cursor: pointer;-->
+<!--        margin-right: 10px;-->
+<!--        display: inline-block;-->
+<!--        font-size: 16px;-->
+<!--        }-->
+
+        .button {
+            background-color: #243665;
+            color: #fff;
+            padding: 8px;
+            border-radius: 5px;
+            border: 0px;
+            font-weight: 400;
+            font-size: 15px;
+            width: 8%;
+            height: 40px;
+        }
+        input {
+            background-color: #fff;
+            color: #243665;
+            padding: 8px;
+            border-radius: 5px;
+            font-weight: 400;
+            font-size: 15px;
+            width: 20%;
+            height: 40px;
+            border: 1px solid #243665;
+        }
+
+
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        {% if warning_message %}
+            <div class="alert alert-warning" role="alert">
+                {{ warning_message }}
+            </div>
+        {% endif %}
+        <div class="row main-row">
+            <div class="col-sm-12">
+                <div style="margin-top: 5px;text-align: left;">
+                    <p style="font-size: 20px;font-weight: 500;">
+                        Search for a brand:
+                    </p>
+                    <div style="text-align: left;padding-top: 5px;">
+                        <input type="text" id="searchInput" placeholder="Enter a brand">
+                        <button id="searchButton" class="button">Search</button>
+                        <button onclick="refreshPage()" class="button">Reset</button>
+
+                    </div>
+                </div>
+                <br>
+                <div id="selectedTopic"></div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <canvas id="myChart" width="550" height="550"></canvas>
+                    </div>
+                    <div class="col-sm-6">
+                        <div id="box">
+                            {{ html | safe }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            // Retrieve data from the server-side variables and initialize variables
+            $('#myChart').css('display', 'block');
+            var labels = {{ labels | tojson }};
+            var values = {{ values | tojson }};
+            var backgroundColor = Array.from({ length: labels.length }, () => 'rgba(36, 54, 101, 1)');
+            var maxLabel = {{ max_label | tojson }};
+            var maxLabelIndex = labels.indexOf(maxLabel);
+
+            $('#selectedTopic').html(maxLabel);
+
+            if (maxLabelIndex !== -1) {
+                fetchTableData(maxLabel);
+            }
+
+            // Highlight the selected topic in the chart
+            if (maxLabelIndex !== -1) {
+                backgroundColor[maxLabelIndex] = 'rgba(145, 205, 184, 1)';
+            }
+
+            // Initialize pie chart
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var chart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            data: values,
+                            backgroundColor: backgroundColor,
+                            hoverBackgroundColor: 'rgba(145,205,184, 1)'
+                        }
+                    ]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    responsive: true,
+                    onClick: handleClick,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+
+            var lastClickedIndex = maxLabelIndex;
+
+            // Function to handle clicks on pie chart
+            function handleClick(event, elements) {
+
+                if (elements && elements.length > 0) {
+                    var clickedElement = elements[0];
+                    var index = clickedElement.index;
+
+                    if (index >= 0 && index < labels.length) {
+                        // Update the selected topic text
+                        $('#selectedTopic').text(labels[index]);
+
+                        if (lastClickedIndex !== null) {
+                            backgroundColor[lastClickedIndex] = 'rgba(36, 54, 101, 1)';
+                        }
+
+                        // Highlight the selected segment in the chart
+                        backgroundColor[index] = 'rgba(145, 205, 184, 1)';
+                        chart.update();
+                        lastClickedIndex = index;
+
+                        // Fetch table data for the selected label
+                        var label = labels[index];
+                        var urlParams = new URLSearchParams(window.location.search);
+                        var source = urlParams.get('source');
+                        var searched = $('#searchInput').val();
+
+                        $.ajax({
+                            type: 'POST',
+                            url: '/update_table',
+                            data: JSON.stringify({ 'label': label, 'searched': searched, 'new_search':false}),
+                            contentType: 'application/json',
+                            success: function(response) {
+                                if (response.results_found === false) {
+                                    $('#selectedTopic').text("No results found for " + searched + ".");
+                                    $('#box').html(response.html);
+                                    $('#myChart').parent().css('visibility', 'hidden');
+
+                                } else {
+                                    $('#myChart').parent().css('visibility', 'visible');
+                                    $('#selectedTopic').text(label);
+                                    $('#box').html(response.html);
+
+                                }
+                                highlightSearchedText(searched);
+                            },
+                            error: function(error) {
+                                console.error('Error sending label to server:', error);
+                            }
+                        });
+
+                        console.log('Clicked label in handleclick:', label);
+                        console.log('Clicked source:', source);
+                        console.log('Clicked searched:', searched);
+                    }
+                }
+            }
+
+            function fetchTableData(label) {
+                // Fetches table data for a label
+                $.ajax({
+                    type: 'POST',
+                    url: '/update_table',
+                    data: JSON.stringify({ 'label': label, 'new_search':false}),
+                    contentType: 'application/json',
+                    success: function(response) {
+                        console.log('Label:', label);
+                        console.log('Results Found:', response.results_found);
+                        if (response.results_found === false) {
+                            $('#selectedTopic').text("");
+                            $('#box').html(response.html);
+                            $('#selectedTopic').text("No results found for " + searched + ".");
+                            $('#myChart').parent().css('visibility', 'hidden');
+                        } else {
+                            $('#selectedTopic').text("");
+                            $('#box').html(response.html);
+                            $('#selectedTopic').text(label);
+                            $('#myChart').parent().css('visibility', 'visible');
+                        }
+                        highlightSearchedText(searched);
+                    },
+                    error: function(error) {
+                        console.error('Error fetching table data:', error);
+                    }
+                });
+            }
+
+            // Event listener for pressing Enter key in the search input field
+            $('#searchInput').keypress(function(event) {
+                if (event.which === 13) { // 13 is key code for Enter
+                    event.preventDefault(); // Prevent the form from submitting
+                    $('#searchButton').click(); // Trigger click event on the search button
+                }
+            });
+
+
+            // Event handler for the search button click
+            $('#searchButton').on('click', function() {
+                var label = $('#selectedTopic').text();
+                var searched = $('#searchInput').val();
+                if (searched.trim() !== '') {
+                    $('#selectedTopic').empty();
+                    $.ajax({
+                        type: 'POST',
+                        url: '/update_table',
+                        data: JSON.stringify({ 'label': label, 'searched': searched, 'new_search':true}),
+                        contentType: 'application/json',
+                        success: function(response) {
+                            if (response.results_found === false) {
+                                $('#selectedTopic').text("No results found for " + searched + ".");
+                                $('#box').html(response.html);
+                                $('#myChart').parent().css('visibility', 'hidden');
+
+                            } else {
+                                $('#selectedTopic').text(response.max_label);
+                                $('#box').html(response.html);
+
+                                labels = response.labels;
+                                values = response.values;
+                                maxLabel = response.max_label;
+                                maxLabelIndex = labels.indexOf(maxLabel);
+                                chart.data.labels = labels;
+                                chart.data.datasets[0].data = values;
+
+                                $('#selectedTopic').text(maxLabel);
+
+                                if (lastClickedIndex !== null) {
+                                    backgroundColor[lastClickedIndex] = 'rgba(36, 54, 101, 1)';
+                                }
+
+                                // Highlight the selected segment in chart
+                                backgroundColor[maxLabelIndex] = 'rgba(145, 205, 184, 1)';
+                                lastClickedIndex = maxLabelIndex;
+                                chart.update();
+								$('#myChart').parent().css('visibility', 'visible');
+                                highlightSearchedText(searched);
+                            }
+                        },
+                        error: function(error) {
+                            console.error('Error sending label to server:', error);
+                        }
+                    });
+
+                    console.log('Clicked searched:', searched);
+                    }
+                else{
+                    refreshPage();
+                };
+            });
+
+            function highlightSearchedText(searchedText) {
+                $('#box td').each(function() {
+                    var cellHtml = $(this).html();
+
+                    // Check if searchedText is not empty
+                    if (searchedText.trim() !== '') {
+                        // Include both original and escaped versions in the regex
+                        var regex = new RegExp(searchedText.replace(/&/g, '&amp;'), 'gi');
+
+                        // Replace and highlight only the matched text
+                        $(this).html(cellHtml.replace(regex, function(match) {
+                            return '<span class="highlight">' + match + '</span>';
+                        }));
+                    } else {
+                        // If searchedText is empty, reset the HTML
+                        // This will ensure that links remain clickable
+                        $(this).html(cellHtml);
+                        $('#myChart').parent().css('visibility', 'visible');
+
+
+                    }
+                });
+            }
+
+        });
+    </script>
+    <script>
+        function refreshPage() {
+            window.location.reload();
+        }
+    </script>
+
+</body>
+
+</html>

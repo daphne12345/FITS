@@ -1,0 +1,555 @@
+Keyword,Label
+SO2,air pollution
+CO,air pollution
+Particle,air pollution
+Ammonia,air pollution
+NOx,air pollution
+NMVOC,air pollution
+pollution,air pollution
+fire safety,building & fire safety
+fire protection,building & fire safety
+building safety,building & fire safety
+emergency exit route,building & fire safety
+safe evacuation,building & fire safety
+ILO 182,child labor
+child labor,child labor
+ILO 138,child labor
+documentation of age,child labor
+age verification,child labor
+verification of age,child labor
+child workers,child labor
+ILO convention 182,child labor
+ILO convention 138,child labor
+child labour,child labor
+longevity,circular economy
+circular,circular economy
+circularity,circular economy
+economic sustainability,economic sustainability
+training,economic sustainability
+Education,economic sustainability
+continued improvement,economic sustainability
+improvement of productivity,economic sustainability
+company performance,economic sustainability
+energy,energy consumption
+renewable,energy consumption
+greenhouse gas,energy consumption
+emissions,energy consumption
+co2,energy consumption
+power,energy consumption
+heat,energy consumption
+electricity,energy consumption
+identity document,forced labor
+labour trafficking,forced labor
+ILO 105,forced labor
+ILO 29,forced labor
+compulsory labour,forced labor
+forced labour,forced labor
+forced labor,forced labor
+compulsory labor,forced labor
+ILO convention 29,forced labor
+exploitation,forced labor
+sexual,forced labor
+ILO convention 105,forced labor
+debt bondage,forced labor
+labor trafficking,forced labor
+modern slavery,forced labor
+withholding ,forced labor
+freedom of movement,forced labor
+human rights,forced labor
+maternal leave,gender equality
+paternity leave,gender equality
+ILO convention 183,gender equality
+equal pay,gender equality
+gender equality,gender equality
+ILO 100,gender equality
+discrimination,gender equality
+ILO convention 100,gender equality
+maternity leave,gender equality
+paternal leave,gender equality
+ILO 183,gender equality
+ILO 155,health & safety
+hygiene,health & safety
+disease,health & safety
+back pain,health & safety
+respiratory,health & safety
+sanitary facilities,health & safety
+potable water,health & safety
+injuries,health & safety
+drinking water,health & safety
+accident,health & safety
+injury,health & safety
+worker health,health & safety
+employee safety,health & safety
+worker safety,health & safety
+safety of employees,health & safety
+employee health,health & safety
+safe workplace,health & safety
+workplace safety,health & safety
+ILO convention 155,health & safety
+medical care,health & safety
+medical services,health & safety
+health and safety,health & safety
+"dispute resolution, mediation",local community
+indigenous,local community
+minorities,local community
+minority,local community
+spiritual site,local community
+cultural site,local community
+archaeological,local community
+historical site,local community
+mediation,local community
+community rights,local community
+local material,local community
+land rights,local community
+local labour,local community
+local community,local community
+local economy,local community
+local good,local community
+local product,local community
+water rights,local community
+local worker,local community
+community development,local community
+local labor,local community
+local workforce,local community
+local service,local community
+rabbit,materials
+mink,materials
+fox,materials
+beaver,materials
+alpaca,materials
+vicuna,materials
+nylon,materials
+polyamide,materials
+amni soul eco,materials
+sheepskin,materials
+econyl,materials
+dacron,materials
+polyester,materials
+linen,materials
+fur,materials
+wool,materials
+angora,materials
+microparticle,materials
+microfibre,materials
+microfiber,materials
+microplastic,materials
+recycled,materials
+fibre,materials
+fiber,materials
+material,materials
+jute,materials
+flax,materials
+sisal,materials
+silk,materials
+rayon,materials
+cashmere,materials
+mohair,materials
+leather,materials
+bamboo,materials
+semi-synthetic,materials
+modal,materials
+cotton,materials
+lyocell,materials
+seacell,materials
+refibra,materials
+PET,materials
+Polyethylenterephthalate,materials
+spandex,materials
+hemp,materials
+kapok,materials
+tencel,materials
+ecovero,materials
+viscose,materials
+synthetic,materials
+diacetate,materials
+triacetate,materials
+elastane,materials
+Environmental risk,other environmental
+Environmental impact,other environmental
+erosion,other environmental
+grievance mechanism,right to organize & freedom of association
+labor union,right to organize & freedom of association
+employee representative,right to organize & freedom of association
+worker representative,right to organize & freedom of association
+collective bargaining,right to organize & freedom of association
+worker representation,right to organize & freedom of association
+ILO convention 98,right to organize & freedom of association
+right to organize,right to organize & freedom of association
+ILO convention 87,right to organize & freedom of association
+freedom of association,right to organize & freedom of association
+right to organise,right to organize & freedom of association
+ILO 98,right to organize & freedom of association
+labour union,right to organize & freedom of association
+employee representation,right to organize & freedom of association
+ILO 87,right to organize & freedom of association
+Miticide,use of chemicals
+noxious,use of chemicals
+formaldehyde,use of chemicals
+Virucide,use of chemicals
+Slimicide,use of chemicals
+Rodenticide,use of chemicals
+Nematicide,use of chemicals
+Molluscicide,use of chemicals
+acaricide,use of chemicals
+Lampricide,use of chemicals
+Insecticide,use of chemicals
+Herbicide,use of chemicals
+Fungicide,use of chemicals
+Bactericide,use of chemicals
+Avicide,use of chemicals
+algaecide,use of chemicals
+Algicide,use of chemicals
+biocide,use of chemicals
+SVHC,use of chemicals
+very high concern,use of chemicals
+REACH,use of chemicals
+toxic,use of chemicals
+chemical,use of chemicals
+nanomaterial,use of chemicals
+Flame retardants,use of chemicals
+fertiliser,use of chemicals
+residue,use of chemicals
+fertilizer,use of chemicals
+pesticide,use of chemicals
+chemical accident,use of chemicals
+hazardous,use of chemicals
+residue,use of chemicals
+H371,use of chemicals
+H370,use of chemicals
+H361,use of chemicals
+H360,use of chemicals
+H351,use of chemicals
+H341,use of chemicals
+Biodegradability,use of chemicals
+H340,use of chemicals
+H330,use of chemicals
+H310,use of chemicals
+H300,use of chemicals
+H411,use of chemicals
+H410,use of chemicals
+H400,use of chemicals
+H350,use of chemicals
+cruelty,vegan
+vegan,vegan
+PETA,vegan
+animal,vegan
+salary,wages & hours
+payment,wages & hours
+compensation,wages & hours
+overtime,wages & hours
+minimum wage,wages & hours
+basic needs,wages & hours
+living wages,wages & hours
+salaries,wages & hours
+paid time off,wages & hours
+vacation ,wages & hours
+wage,wages & hours
+ILO convention 1,wages & hours
+working hours,wages & hours
+allowance,wages & hours
+subsidy,wages & hours
+subsidies,wages & hours
+ILO 1,wages & hours
+waste,waste management
+toxic waste,waste management
+used clothes,waste management
+used clothing,waste management
+used garments,waste management
+used textiles,waste management
+old clothing,waste management
+old garments,waste management
+old textiles,waste management
+recycling,waste management
+landfill,waste management
+old clothes,waste management
+textile finishing,water
+waste water,water
+water,water
+water rights,water
+labor conditions,working conditions
+contract,working conditions
+housing,working conditions
+abuse,working conditions
+harrassment,working conditions
+military,working conditions
+militaristic,working conditions
+labour conditions,working conditions
+working conditions,working conditions
+mistreatment,working conditions
+SO2s,air pollution
+COS,air pollution
+Particles,air pollution
+Ammonias,air pollution
+NOxes,air pollution
+NMVOCS,air pollution
+pollution,air pollution
+fire safeties,building & fire safety
+fire protections,building & fire safety
+building safeties,building & fire safety
+emergency exit routes,building & fire safety
+safe evacuations,building & fire safety
+ILO 182s,child labor
+child labors,child labor
+ILO 138s,child labor
+documentation of ages,child labor
+age verifications,child labor
+verification of ages,child labor
+child workers,child labor
+ILO convention 182s,child labor
+ILO convention 138s,child labor
+child labours,child labor
+longevities,circular economy
+circulars,circular economy
+circularities,circular economy
+economic sustainabilities,economic sustainability
+trainings,economic sustainability
+Educations,economic sustainability
+continued improvements,economic sustainability
+improvement of productivities,economic sustainability
+company performances,economic sustainability
+energy,energy consumption
+renewables,energy consumption
+greenhouse gases,energy consumption
+emissions,energy consumption
+co2s,energy consumption
+powers,energy consumption
+heats,energy consumption
+electricities,energy consumption
+identity documents,forced labor
+labour traffickings,forced labor
+ILO 105s,forced labor
+ILO 29s,forced labor
+compulsory labours,forced labor
+forced labours,forced labor
+forced labors,forced labor
+compulsory labors,forced labor
+ILO convention 29s,forced labor
+exploitations,forced labor
+sexuals,forced labor
+ILO convention 105s,forced labor
+debt bondages,forced labor
+labor traffickings,forced labor
+modern slaveries,forced labor
+withholding s,forced labor
+freedom of movements,forced labor
+human rights,forced labor
+maternal leaves,gender equality
+paternity leaves,gender equality
+ILO convention 183s,gender equality
+equal pays,gender equality
+gender equalities,gender equality
+ILO 100s,gender equality
+discriminations,gender equality
+ILO convention 100s,gender equality
+maternity leaves,gender equality
+paternal leaves,gender equality
+ILO 183s,gender equality
+ILO 155s,health & safety
+hygienes,health & safety
+diseases,health & safety
+back pains,health & safety
+respiratories,health & safety
+sanitary facilities,health & safety
+potable waters,health & safety
+injuries,health & safety
+drinking waters,health & safety
+accidents,health & safety
+injuries,health & safety
+worker healths,health & safety
+employee safeties,health & safety
+worker safeties,health & safety
+safety of employees,health & safety
+employee healths,health & safety
+safe workplaces,health & safety
+workplace safeties,health & safety
+ILO convention 155s,health & safety
+medical cares,health & safety
+medical services,health & safety
+health and safeties,health & safety
+"dispute resolution, mediations",local community
+indigenous,local community
+minorities,local community
+minorities,local community
+spiritual sites,local community
+cultural sites,local community
+archaeologicals,local community
+historical sites,local community
+mediations,local community
+community rights,local community
+local materials,local community
+land rights,local community
+local labours,local community
+local communities,local community
+local economies,local community
+local goods,local community
+local products,local community
+water rights,local community
+local workers,local community
+community developments,local community
+local labors,local community
+local workforces,local community
+local services,local community
+rabbits,materials
+minks,materials
+foxes,materials
+beavers,materials
+alpacas,materials
+vicunas,materials
+nylons,materials
+polyamides,materials
+amni soul ecos,materials
+sheepskins,materials
+econyls,materials
+dacrons,materials
+polyesters,materials
+linens,materials
+furs,materials
+wools,materials
+angoras,materials
+microparticles,materials
+microfibres,materials
+microfibers,materials
+microplastics,materials
+recycleds,materials
+fibres,materials
+fibers,materials
+materials,materials
+jutes,materials
+flaxes,materials
+sisals,materials
+silks,materials
+rayons,materials
+cashmeres,materials
+mohairs,materials
+leathers,materials
+bamboos,materials
+semi-synthetics,materials
+modals,materials
+cottons,materials
+lyocells,materials
+seacells,materials
+refibras,materials
+PETS,materials
+Polyethylenterephthalates,materials
+spandexes,materials
+hemps,materials
+kapoks,materials
+tencels,materials
+ecoveros,materials
+viscoses,materials
+synthetics,materials
+diacetates,materials
+triacetates,materials
+elastanes,materials
+Environmental risks,other environmental
+Environmental impacts,other environmental
+erosions,other environmental
+grievance mechanisms,right to organize & freedom of association
+labor unions,right to organize & freedom of association
+employee representatives,right to organize & freedom of association
+worker representatives,right to organize & freedom of association
+collective bargainings,right to organize & freedom of association
+worker representations,right to organize & freedom of association
+ILO convention 98s,right to organize & freedom of association
+right to organizes,right to organize & freedom of association
+ILO convention 87s,right to organize & freedom of association
+freedom of associations,right to organize & freedom of association
+right to organises,right to organize & freedom of association
+ILO 98s,right to organize & freedom of association
+labour unions,right to organize & freedom of association
+employee representations,right to organize & freedom of association
+ILO 87s,right to organize & freedom of association
+Miticides,use of chemicals
+noxious,use of chemicals
+formaldehydes,use of chemicals
+Virucides,use of chemicals
+Slimicides,use of chemicals
+Rodenticides,use of chemicals
+Nematicides,use of chemicals
+Molluscicides,use of chemicals
+acaricides,use of chemicals
+Lampricides,use of chemicals
+Insecticides,use of chemicals
+Herbicides,use of chemicals
+Fungicides,use of chemicals
+Bactericides,use of chemicals
+Avicides,use of chemicals
+algaecides,use of chemicals
+Algicides,use of chemicals
+biocides,use of chemicals
+SVHCS,use of chemicals
+very high concerns,use of chemicals
+REACHES,use of chemicals
+toxics,use of chemicals
+chemicals,use of chemicals
+nanomaterials,use of chemicals
+Flame retardants,use of chemicals
+fertilisers,use of chemicals
+residues,use of chemicals
+fertilizers,use of chemicals
+pesticides,use of chemicals
+chemical accidents,use of chemicals
+hazardous,use of chemicals
+residues,use of chemicals
+H371s,use of chemicals
+H370s,use of chemicals
+H361s,use of chemicals
+H360s,use of chemicals
+H351s,use of chemicals
+H341s,use of chemicals
+Biodegradabilities,use of chemicals
+H340s,use of chemicals
+H330s,use of chemicals
+H310s,use of chemicals
+H300s,use of chemicals
+H411s,use of chemicals
+H410s,use of chemicals
+H400s,use of chemicals
+H350s,use of chemicals
+cruelties,vegan
+vegans,vegan
+PETAS,vegan
+animals,vegan
+salaries,wages & hours
+payments,wages & hours
+compensations,wages & hours
+overtimes,wages & hours
+minimum wages,wages & hours
+basic needs,wages & hours
+living wages,wages & hours
+salaries,wages & hours
+paid time offs,wages & hours
+vacation s,wages & hours
+wages,wages & hours
+ILO convention 1s,wages & hours
+working hours,wages & hours
+allowances,wages & hours
+subsidies,wages & hours
+subsidies,wages & hours
+ILO 1s,wages & hours
+wastes,waste management
+toxic wastes,waste management
+used clothes,waste management
+used clothings,waste management
+used garments,waste management
+used textiles,waste management
+old clothings,waste management
+old garments,waste management
+old textiles,waste management
+recyclings,waste management
+landfills,waste management
+old clothes,waste management
+textile finishings,water
+waste waters,water
+waters,water
+water rights,water
+labor conditions,working conditions
+contracts,working conditions
+housings,working conditions
+abuses,working conditions
+harrassments,working conditions
+militaries,working conditions
+militaristics,working conditions
+labour conditions,working conditions
+working conditions,working conditions
+mistreatments,working conditions

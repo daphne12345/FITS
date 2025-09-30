@@ -1,0 +1,71 @@
+<!-- templates/loading_uploaded.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+        }
+
+        .spinner {
+            border: 8px solid #243665;
+            border-radius: 50%;
+            border-top: 8px solid #fff;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+
+        .loading-message {
+            font-size: 24px;
+            color: #333;
+        }
+
+        .spinner-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+    </style>
+    <script>
+	
+	function handleErrors(response) {
+    if (!response.ok) {
+        throw Error(response.statusText);
+    }
+    return response;
+	}
+    function navigate() {
+        window.location.href = '/show_pie_chart_uploaded';  // Redirects to the pie chart when the function is done
+    }
+
+    function error() {
+        window.location.href = '/error1';  // Displays an error if the function failed
+    }
+    fetch('process_uploaded_data').then(handleErrors).then(navigate).catch(error); // Performs 'process_uploaded_data' and then calls navigate() function
+</script>
+</head>
+<body>
+    <div class="spinner-container">
+        <div class="spinner"></div>
+        <br>
+        <div class="loading-message"> Your data is being processed... </div>
+    </div>
+</body>
+</html>

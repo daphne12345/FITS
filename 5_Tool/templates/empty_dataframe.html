@@ -1,0 +1,27 @@
+<!--Displays warning in case of an error in preprocessing.-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dataframe Empty</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+        .container {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Data Processing Result</h1>
+        {% if warning_message %}
+            <div class="alert alert-warning" role="alert">
+                {{ warning_message }}
+            </div>
+        {% else %}
+            <p>Data processed successfully.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

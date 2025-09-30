@@ -1,0 +1,327 @@
+<!--Starting page of the application.-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>FITS</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+        .container {
+            padding: 5%;
+            padding-top: 5%;
+            text-align: center;
+
+        }
+        table, tr {
+            width: 100%;
+            border: 2px solid black;
+        }
+        tr {
+            border: 2px solid black;
+        }
+        td {
+            padding: 5px;
+        }
+        button {
+            background-color: #243665;
+            color: #fff;
+            padding: 8px;
+            border-radius: 5px;
+            border: 0px;
+            font-weight: 400;
+            font-size: 15px;
+            width: 33%;
+        }
+        label {
+            font-size: 16px;
+            font-weight: 400;
+        }
+        input[type='radio']:checked:after {
+            width: 7px;
+            height: 7px;
+            border-radius: 15px;
+            padding: 5px;
+            top: 0px;
+            left: 0px;
+            position: relative;
+            background-color: #243665;
+            content: '';
+            display: inline-block;
+            visibility: visible;
+            border: 1px solid #fff;
+        }
+        .file-list {
+            margin-top: 10px;
+            text-align: left;
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+        }
+        #uploaded-files-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        #uploaded-files-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px;
+            border-bottom: 1px solid #ccc;
+        }
+        .file-name {
+            margin-right: 10px;
+        }
+        .file-remove {
+            cursor: pointer;
+            color: red;
+        }
+        .to-be-uploaded {
+            color: #A8A9AD;
+        }
+
+        #fileInput {
+            visibility: hidden;
+            width: 0;
+            height: 0;
+        }
+
+        .custom-file-upload {
+            display: inline-block;
+            padding: 6px 12px;
+            cursor: pointer;
+            background-color: #243665;
+            color: white;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+
+        #cb1 {
+          accent-color: #243665;
+          width: 20px;
+            height: 20px;
+        }
+        #cb2 {
+          accent-color: #243665;
+          width: 20px;
+        height: 20px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row main-row">
+            <div class="col-sm-12">
+                <div style="margin-top: 30px;text-align: left;">
+                    <p style="font-size: 26px;font-weight: 500;">
+                        You may upload additional PDF documents for the analysis.
+                    </p>
+                </div>
+                <div id="data-table" style="margin-top: 30px;text-align: left;font-size: 20px;">
+                    <input type="file" id="fileInput" accept="application/pdf" multiple onchange="handleFileSelect(event)">
+                    <label for="fileInput" class="custom-file-upload">Choose PDF Files</label>
+                    <div class="file-list" id="file-list-container">
+                        <ul id="uploaded-files-list"></ul>
+                    </div>
+                    <div style="text-align: right;padding-top: 20px;">
+                        <button onclick="resetAllData()" style="font-size: 20px; float: left;">Reset all data</button>
+                        <button onclick="uploadFiles()" style="font-size: 20px;">Upload Data (optional)</button>
+                    </div>
+                </div>
+                <div style="margin-top: 20px;text-align: left;">
+                    <form>
+                        <input type="checkbox" name="format" id="cb1" value="url" checked="">
+                        <label for="cb1" style="font-size: 24px;">Use the data in the backend</label><br>
+                        <input type="checkbox" name="format" id="cb2" value="text">
+                        <label for="cb2" style="font-size: 24px;">Use the data I uploaded</label>
+                    </form>
+                    <div style="margin-top: 40px;text-align: right;">
+                        <button onclick="showPieChart()" style="font-size: 20px;">Run Analysis</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        var fileList = [];
+
+        function handleFileSelect(event) {
+            // Adds selected files to file list
+            var files = event.target.files;
+            for (var i = 0; i < files.length; i++) {
+                fileList.push(files[i]);
+            }
+            updateFileList();
+        }
+
+        function removeFile(index) {
+            //  removes a file from the list
+            fileList.splice(index, 1);
+            updateFileList();
+        }
+
+        function updateFileList() {
+            // Updates file list and creates HTML elemnts
+            var uploadedFilesList = document.getElementById("uploaded-files-list");
+            uploadedFilesList.innerHTML = "";
+            fileList.forEach(function(file, index) {
+                var listItem = document.createElement("li");
+                listItem.className = "to-be-uploaded";
+
+                var fileName = document.createElement("span");
+                fileName.className = "file-name";
+                fileName.textContent = file.name;
+
+                var removeLink = document.createElement("span");
+                removeLink.className = "file-remove";
+                removeLink.textContent = "Remove";
+                removeLink.setAttribute("onclick", "removeFile(" + index + ")");
+                listItem.appendChild(fileName);
+                listItem.appendChild(removeLink);
+
+                uploadedFilesList.appendChild(listItem);
+            });
+        }
+
+        function uploadFiles() {
+            // uploades files
+            var formData = new FormData();
+            fileList.forEach(function(file) {
+                formData.append('files', file);
+            });
+
+            $.ajax({
+                url: '/upload_files',
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    alert(response);
+                    fileList = [];
+                    fetchUploadedFiles(); // Refresh uploaded files list
+                    $('#cb2').prop('checked', 'checked');
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+        }
+
+        function fetchUploadedFiles() {
+            //  Refreshes uploaded files list
+            $.get('/list_uploaded_files', function(files) {
+                var fileListHtml = files.map(function(fileName) {
+                    return '<li>' + fileName +
+                           ' <span class="file-remove" onclick="removeUploadedFile(\'' + fileName + '\')">Remove</span></li>';
+                }).join('');
+                $('#uploaded-files-list').html(fileListHtml);
+            });
+        }
+
+        function resetAllData() {
+            //  Removes all files
+            if (confirm('Are you sure you want to reset all data?')) {
+                fetch('/reset_data', { method: 'POST' })
+                    .then(response => response.json())
+                    .then(data => {
+                        location.reload();
+                    })
+                    .catch(error => {
+                        alert('An error occurred: ' + error);
+                    });
+            }
+        }
+
+        function showPieChart() {
+            var isCheckedBackend = $('#cb1').prop('checked');
+            var isCheckedMine = $('#cb2').prop('checked');
+
+            // Check the list of files already uploaded to the server
+            $.ajax({
+                url: '/list_uploaded_files',
+                method: 'GET',
+                success: function(uploadedFiles) {
+                if (isCheckedMine) {
+
+                    // Check if the folder is empty (no files uploaded)
+                    if (uploadedFiles.length === 0) {
+                        alert("No data to process for analysis. Please upload files first.");
+                    }
+                    else {
+                        if (fileList.length > 0) {
+                            if (isCheckedBackend){
+                                var proceedWithoutUploading = confirm("You have selected files but did not upload them. Are you sure you want to continue? If you choose 'Yes', the analysis will start without using the selected files.");
+                                if (proceedWithoutUploading) {
+                                    console.log("Redirecting to /show_pie_chart_uploaded");
+                                    window.location.href = "/loading_uploaded";
+                                } else {
+                                    console.log("User chose not to proceed");
+                                }
+                            }
+                            else {
+                                alert("You have selected files but did not upload them.");
+                                }
+
+                        }
+                        else {
+                            if (isCheckedBackend){
+                                // data was uplaoded properly and backend data should be used
+                                console.log("Redirecting to /show_pie_chart_database_and_uploaded");
+                                window.location.href = "/loading_database_and_uploaded";
+                            }
+                            else {
+                                // No additional files are selected, proceed with the analysis
+                                console.log("Redirecting to /show_pie_chart_uploaded");
+                                window.location.href = "/loading_uploaded";
+                            }
+                        }
+                    }
+
+                }
+                else if (isCheckedBackend) {
+                            // No additional files are selected, proceed with the analysis
+                            console.log("Redirecting to /show_pie_chart_database");
+                            window.location.href = "/show_pie_chart_database";
+                    }
+                else {
+                    alert("You have to select at least one of the options.");
+                }
+            },
+            error: function() {
+                alert("Error checking uploaded files.");
+               }
+            });
+        }
+
+
+
+        function removeUploadedFile(fileName) {
+            $.ajax({
+                url: '/remove_uploaded_file',  // Flask route to handle file removal
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ 'fileName': fileName }),
+                success: function(response) {
+                    alert('File removed successfully');
+                    fetchUploadedFiles();  // Refresh the file list
+                },
+                error: function(error) {
+                    console.error('Error removing file:', error);
+                }
+            });
+        }
+
+        $(document).ready(function() {
+            fetchUploadedFiles();
+        });
+    </script>
+</body>
+</html>
